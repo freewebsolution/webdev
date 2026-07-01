@@ -1,0 +1,8 @@
+src/**
+.vscode/**
+node_modules/**
+*.map
+tsconfig.json
+package-lock.json
+.vscodeignore
+assets/icon-marketplace.svg

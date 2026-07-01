@@ -1,0 +1,89 @@
+{
+  "name": "webdev",
+  "displayName": "WebDev AI",
+  "description": "AI assistant for web developers in VS Code with streaming chat, file import, image/PDF support, and Groq-powered models.",
+  "version": "0.1.0",
+  "publisher": "technocenter",
+  "license": "MIT",
+  "icon": "assets/icon128.png",
+  "repository": { "type": "git", "url": "https://github.com/technocenter/webdev-ai" },
+  "homepage": "https://github.com/technocenter/webdev-ai",
+  "bugs": { "url": "https://github.com/technocenter/webdev-ai/issues" },
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Machine Learning", "Other"],
+  "keywords": ["ai", "assistant", "chat", "developer tools", "groq", "llama", "qwen", "web development", "triage"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "webdev.open", "title": "WebDev AI: Open" },
+      { "command": "webdev.newSession", "title": "WebDev AI: New Session" },
+      { "command": "webdev.configure", "title": "WebDev AI: Configura API Keys" },
+      { "command": "webdev.openPanel", "title": "WebDev AI: Apri Editor", "icon": { "light": "assets/icon-light.svg", "dark": "assets/icon-dark.svg" } }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "webdev.openPanel",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "webdev",
+          "title": "WebDev AI",
+          "icon": "assets/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "webdev": [
+        {
+          "type": "webview",
+          "id": "webdev.sidebar",
+          "name": "AI Triage"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "WebDev AI",
+      "properties": {
+        "webdev.defaultProvider": {
+          "type": "string",
+          "default": "anthropic",
+          "enum": ["anthropic", "openai", "groq", "ollama"],
+          "description": "Default AI provider"
+        },
+        "webdev.defaultModel": {
+          "type": "string",
+          "default": "",
+          "description": "Default model ID (empty = provider default)"
+        },
+        "webdev.ollamaHost": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama host URL"
+        },
+        "webdev.weeklyBudget": {
+          "type": "number",
+          "default": 10,
+          "description": "Budget settimanale stimato in USD (usato per la barra di utilizzo)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.9.2",
+    "typescript": "^5.0.0"
+  }
+}
