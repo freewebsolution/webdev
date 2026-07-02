@@ -1,25 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!-- sfondo pieno senza bordi arrotondati — VS Code applica la sua maschera -->
-  <rect width="128" height="128" fill="#0d1117"/>
-  <!-- esagono grande e ben visibile anche a 16px -->
   <g transform="translate(64,64)">
-    <polygon points="0,-44 38.1,-22 38.1,22 0,44 -38.1,22 -38.1,-22"
-             stroke="#4fc3f7" stroke-width="4" fill="none" stroke-linejoin="round"/>
-    <!-- nodo centrale -->
-    <circle cx="0" cy="0" r="9" fill="#4fc3f7"/>
-    <!-- nodi angoli -->
-    <circle cx="0" cy="-44" r="5" fill="#4fc3f7"/>
-    <circle cx="38.1" cy="-22" r="5" fill="#4fc3f7"/>
-    <circle cx="38.1" cy="22" r="5" fill="#4fc3f7"/>
-    <circle cx="0" cy="44" r="5" fill="#4fc3f7"/>
-    <circle cx="-38.1" cy="22" r="5" fill="#4fc3f7"/>
-    <circle cx="-38.1" cy="-22" r="5" fill="#4fc3f7"/>
-    <!-- raggi dal centro -->
-    <line x1="0" y1="-9" x2="0" y2="-39" stroke="#4fc3f7" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="7.8" y1="-4.5" x2="33.3" y2="-18.5" stroke="#4fc3f7" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="7.8" y1="4.5" x2="33.3" y2="18.5" stroke="#4fc3f7" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="0" y1="9" x2="0" y2="39" stroke="#4fc3f7" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="-7.8" y1="4.5" x2="-33.3" y2="18.5" stroke="#4fc3f7" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="-7.8" y1="-4.5" x2="-33.3" y2="-18.5" stroke="#4fc3f7" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="0,-52 45,-26 45,26 0,52 -45,26 -45,-26"
+             stroke="#4fc3f7" stroke-width="5" fill="none" stroke-linejoin="round"/>
+    <circle cx="0" cy="0" r="11" fill="#4fc3f7"/>
+    <circle cx="0" cy="-52" r="6" fill="#4fc3f7"/>
+    <circle cx="45" cy="-26" r="6" fill="#4fc3f7"/>
+    <circle cx="45" cy="26" r="6" fill="#4fc3f7"/>
+    <circle cx="0" cy="52" r="6" fill="#4fc3f7"/>
+    <circle cx="-45" cy="26" r="6" fill="#4fc3f7"/>
+    <circle cx="-45" cy="-26" r="6" fill="#4fc3f7"/>
+    <line x1="0" y1="-11" x2="0" y2="-46" stroke="#4fc3f7" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="9.5" y1="-5.5" x2="39.5" y2="-21.5" stroke="#4fc3f7" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="9.5" y1="5.5" x2="39.5" y2="21.5" stroke="#4fc3f7" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="0" y1="11" x2="0" y2="46" stroke="#4fc3f7" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="-9.5" y1="5.5" x2="-39.5" y2="21.5" stroke="#4fc3f7" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="-9.5" y1="-5.5" x2="-39.5" y2="-21.5" stroke="#4fc3f7" stroke-width="3.5" stroke-linecap="round"/>
   </g>
 </svg>

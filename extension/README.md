@@ -87,4 +87,4 @@ Clicca sulla barra stack (▾ configura) per impostare il contesto:
 
 ## Licenza
 
-MIT — Sviluppato da [Technocenter](https://github.com/technocenter) — Ing. Lucio Ticali
+MIT — Sviluppato da [freewebsolution](https://github.com/freewebsolution/webdev) — Ing. Lucio Ticali
