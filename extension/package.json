@@ -3,7 +3,7 @@
   "displayName": "WebDev AI",
   "description": "AI assistant for web developers in VS Code with streaming chat, file import, image/PDF support, and Groq-powered models.",
   "version": "0.2.0",
-  "publisher": "lucianoticali",
+  "publisher": "freewebsolution",
   "license": "MIT",
   "icon": "assets/icon128.png",
   "repository": { "type": "git", "url": "https://github.com/freewebsolution/webdev" },
