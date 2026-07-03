@@ -2,7 +2,7 @@
   "name": "webdev",
   "displayName": "WebDev AI",
   "description": "AI assistant for web developers in VS Code with streaming chat, file import, image/PDF support, and Groq-powered models.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "freewebsolution",
   "license": "MIT",
   "icon": "assets/icon128.png",
@@ -21,7 +21,14 @@
       { "command": "webdev.configure", "title": "WebDev AI: Configura API Keys" },
       { "command": "webdev.openPanel", "title": "WebDev AI: Apri Editor", "icon": { "light": "assets/icon-light.svg", "dark": "assets/icon-dark.svg" } }
     ],
-    "menus": {},
+    "menus": {
+      "editor/title": [
+        {
+          "command": "webdev.openPanel",
+          "group": "navigation"
+        }
+      ]
+    },
     "viewsContainers": {
       "activitybar": [
         {
@@ -71,7 +78,8 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "vsce package"
+    "package": "vsce package",
+    "publish:ovsx": "npm run package && ovsx publish webdev-$(node -p \"require('./package.json').version\").vsix -p $OVSX_TOKEN"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
