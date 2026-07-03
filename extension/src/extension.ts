@@ -6,16 +6,18 @@ import { WebDevPanel } from './WebDevPanel';
 const GITHUB_REPO = 'freewebsolution/webdev';
 const CURRENT_VERSION: string = require('../package.json').version;
 
-async function checkForUpdate(context: vscode.ExtensionContext): Promise<void> {
-  // Check once per day
+async function checkForUpdate(context: vscode.ExtensionContext, force = false): Promise<void> {
   const lastCheck = context.globalState.get<number>('webdev.lastUpdateCheck', 0);
-  if (Date.now() - lastCheck < 86_400_000) { return; }
+  if (!force && Date.now() - lastCheck < 86_400_000) { return; }
 
   try {
     const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`, {
       headers: { 'User-Agent': 'vscode-webdev-ai' }
     });
-    if (!res.ok) { return; }
+    if (!res.ok) {
+      if (force) { vscode.window.showWarningMessage(`WebDev AI: GitHub API risposto ${res.status}`); }
+      return;
+    }
     const data = await res.json() as { tag_name: string; html_url: string };
     const latest = data.tag_name?.replace(/^v/, '');
     if (!latest) { return; }
@@ -31,9 +33,11 @@ async function checkForUpdate(context: vscode.ExtensionContext): Promise<void> {
       if (action === 'Scarica aggiornamento') {
         vscode.env.openExternal(vscode.Uri.parse(data.html_url));
       }
+    } else if (force) {
+      vscode.window.showInformationMessage(`WebDev AI: sei già all'ultima versione (${CURRENT_VERSION})`);
     }
-  } catch {
-    // silently ignore network errors
+  } catch (e) {
+    if (force) { vscode.window.showWarningMessage(`WebDev AI: controllo aggiornamenti fallito — ${e}`); }
   }
 }
 
@@ -41,6 +45,8 @@ export function activate(context: vscode.ExtensionContext) {
   const keyManager = new KeyManager(context.globalState);
   const provider = new WebDevViewProvider(context);
 
+  // Reset so check always runs on first activation after install
+  context.globalState.update('webdev.lastUpdateCheck', 0);
   checkForUpdate(context);
 
   context.subscriptions.push(
@@ -70,6 +76,9 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('webdev.openPanel', () => {
       // onDispose: when panel closes, push its history to the sidebar
       WebDevPanel.createOrShow(context, () => provider.sendHistory());
+    }),
+    vscode.commands.registerCommand('webdev.checkUpdate', () => {
+      checkForUpdate(context, true);
     })
   );
 }

@@ -19,7 +19,8 @@
       { "command": "webdev.open", "title": "WebDev AI: Open" },
       { "command": "webdev.newSession", "title": "WebDev AI: New Session" },
       { "command": "webdev.configure", "title": "WebDev AI: Configura API Keys" },
-      { "command": "webdev.openPanel", "title": "WebDev AI: Apri Editor", "icon": { "light": "assets/icon-light.svg", "dark": "assets/icon-dark.svg" } }
+      { "command": "webdev.openPanel", "title": "WebDev AI: Apri Editor", "icon": { "light": "assets/icon-light.svg", "dark": "assets/icon-dark.svg" } },
+      { "command": "webdev.checkUpdate", "title": "WebDev AI: Controlla aggiornamenti" }
     ],
     "menus": {
       "editor/title": [
