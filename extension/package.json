@@ -2,7 +2,7 @@
   "name": "webdev",
   "displayName": "WebDev AI",
   "description": "AI assistant for web developers in VS Code with streaming chat, file import, image/PDF support, and Groq-powered models.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "freewebsolution",
   "license": "MIT",
   "icon": "assets/icon128.png",
@@ -79,7 +79,9 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "vsce package",
-    "publish:ovsx": "npm run package && ovsx publish webdev-$(node -p \"require('./package.json').version\").vsix -p $OVSX_TOKEN"
+    "publish:ovsx": "npm run package && ovsx publish webdev-$(node -p \"require('./package.json').version\").vsix -p $OVSX_TOKEN",
+    "publish:vscode": "npm run package && vsce publish --packagePath webdev-$(node -p \"require('./package.json').version\").vsix -p $VSCE_PAT",
+    "publish:all": "npm run package && ovsx publish webdev-$(node -p \"require('./package.json').version\").vsix -p $OVSX_TOKEN && vsce publish --packagePath webdev-$(node -p \"require('./package.json').version\").vsix -p $VSCE_PAT"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
